@@ -28,3 +28,14 @@ The following files are included in the repository:
 2. `run_analysis.R`: The R script that downloads, manipulates, and cleans the data to make a tidy data set.
 3. `CodeBook.md`: The code book for run_analysis.R which provides information on the data, variables, and calculations used in the R script.
 4. `tidy.txt`: The tidy data set produced by run_analysis.R.
+
+## How the code works
+The run_analysis r script performs the following to create the final tidy data set:
+1. The code loads the necessary packages.
+2. If the data is not already downloaded and in the working directory, the code will download and unzip the required data set folder.
+3. Next, the code reads the activity and feature label data sets and renames the variables for ActivityId, ActivityType, Id, and FeatureName.
+4. The code then reads the test data and merges that data set with the activity labels. The values in the FeatureName column of the features data frame are used to label the columns of the test data. The code also reads in the subject ids for the test data set. The same steps are followed for the train data sets
+5. Next, the code merges the test data with the test subject ids, and merges the train data with the train subject ids. Lastly, the code merges the test and the train data to create one tidy data set.
+6. Once the data is merged, the code subsets the data to only include SubjectID, ActivityType, and all variables on the mean and standard deviation of the measurements.
+7. From the data set created in step 6, the code calculates the average of each variable for each activity and participant.
+8. Lastly, the code exports the file tidy.txt with the final tidy data set.
